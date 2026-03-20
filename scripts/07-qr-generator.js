@@ -4,6 +4,13 @@ const qrGenerateBtn = document.getElementById("qrGenerateBtn");
 const qrImage = document.getElementById("qrImage");
 const qrDownloadLink = document.getElementById("qrDownloadLink");
 const qrStatus = document.getElementById("qrStatus");
+const qrLibraryCdnUrls = [
+  "https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js",
+  "https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js",
+];
+const qrScriptLoadCache = new Map();
+let qrLibraryEnsurePromise = null;
 
 function escapeSvgText(value) {
   return String(value)
@@ -15,7 +22,7 @@ function escapeSvgText(value) {
 }
 
 function buildFallbackQrSvgUrl(text, size) {
-  const safeText = escapeSvgText(text);
+  const safeText = escapeSvgText(String(text || "").slice(0, 28));
   const safeSize = Math.max(120, Number(size) || 220);
   const fontSize = Math.max(10, Math.round(safeSize * 0.08));
   const titleY = Math.round(safeSize * 0.47);
@@ -30,22 +37,89 @@ function buildFallbackQrSvgUrl(text, size) {
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
-async function buildQrDataUrl(text, size) {
+function getQrApi() {
+  if (window.QRCode && typeof window.QRCode.toDataURL === "function") return window.QRCode;
+  return null;
+}
+
+function loadQrScript(url) {
+  if (getQrApi()) return Promise.resolve(true);
+  if (qrScriptLoadCache.has(url)) return qrScriptLoadCache.get(url);
+
+  const loaderPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = url;
+    script.async = true;
+    script.onload = () => resolve(true);
+    script.onerror = () => reject(new Error(`qr-script-load-failed:${url}`));
+    document.head.appendChild(script);
+  });
+
+  qrScriptLoadCache.set(url, loaderPromise);
+  return loaderPromise;
+}
+
+async function ensureQrLibrary() {
+  if (getQrApi()) return true;
+
+  if (!qrLibraryEnsurePromise) {
+    qrLibraryEnsurePromise = (async () => {
+      for (const url of qrLibraryCdnUrls) {
+        try {
+          await loadQrScript(url);
+          if (getQrApi()) return true;
+        } catch {
+          // Try the next CDN URL.
+        }
+      }
+      return false;
+    })();
+  }
+
+  return qrLibraryEnsurePromise;
+}
+
+function buildRemoteQrUrl(text, size) {
+  const safeText = String(text || "").trim();
+  const safeSize = Math.max(120, Number(size) || 220);
+  return `https://api.qrserver.com/v1/create-qr-code/?size=${safeSize}x${safeSize}&margin=0&ecc=M&format=png&data=${encodeURIComponent(safeText)}`;
+}
+
+async function buildQrSources(text, size) {
   const safeText = String(text || "").trim();
   const safeSize = Math.max(120, Number(size) || 220);
   if (!safeText) throw new Error("empty-qr-text");
+  const sources = [];
 
-  if (window.QRCode && typeof window.QRCode.toDataURL === "function") {
-    const url = await window.QRCode.toDataURL(safeText, {
-      width: safeSize,
-      margin: 1,
-      errorCorrectionLevel: "M",
-      color: { dark: "#111111", light: "#FFFFFF" },
-    });
-    return { url, source: "local" };
+  let qrApi = getQrApi();
+  if (!qrApi) {
+    await ensureQrLibrary();
+    qrApi = getQrApi();
   }
 
-  return { url: buildFallbackQrSvgUrl(safeText, safeSize), source: "fallback" };
+  if (qrApi) {
+    try {
+      const localUrl = await qrApi.toDataURL(safeText, {
+        width: safeSize,
+        margin: 1,
+        errorCorrectionLevel: "M",
+        color: { dark: "#111111", light: "#FFFFFF" },
+      });
+      sources.push({ url: localUrl, source: "local" });
+    } catch {
+      // Continue to next source.
+    }
+  }
+
+  sources.push({ url: buildRemoteQrUrl(safeText, safeSize), source: "remote" });
+  sources.push({ url: buildFallbackQrSvgUrl(safeText, safeSize), source: "fallback" });
+
+  const seen = new Set();
+  return sources.filter(({ url }) => {
+    if (!url || seen.has(url)) return false;
+    seen.add(url);
+    return true;
+  });
 }
 
 function setQrImageWithFallback(imageEl, text, size, onDone) {
@@ -56,22 +130,35 @@ function setQrImageWithFallback(imageEl, text, size, onDone) {
 
   imageEl.style.display = "none";
   imageEl.removeAttribute("srcset");
+  imageEl.removeAttribute("src");
   imageEl.onload = null;
   imageEl.onerror = null;
 
-  buildQrDataUrl(text, size)
-    .then(({ url, source }) => {
-      imageEl.onload = () => {
-        imageEl.style.display = "block";
-        imageEl.onload = null;
-        imageEl.onerror = null;
-        if (onDone) onDone(true, url, source);
+  buildQrSources(text, size)
+    .then((sources) => {
+      let sourceIndex = 0;
+      const tryNextSource = () => {
+        if (sourceIndex >= sources.length) {
+          if (onDone) onDone(false, null, null);
+          return;
+        }
+        const { url, source } = sources[sourceIndex];
+        sourceIndex += 1;
+
+        imageEl.onload = () => {
+          imageEl.style.display = "block";
+          imageEl.onload = null;
+          imageEl.onerror = null;
+          if (onDone) onDone(true, url, source);
+        };
+        imageEl.onerror = () => {
+          imageEl.removeAttribute("src");
+          tryNextSource();
+        };
+        imageEl.src = url;
       };
-      imageEl.onerror = () => {
-        imageEl.removeAttribute("src");
-        if (onDone) onDone(false, null, source);
-      };
-      imageEl.src = url;
+
+      tryNextSource();
     })
     .catch(() => {
       imageEl.removeAttribute("src");
@@ -83,28 +170,35 @@ if (qrImage) qrImage.style.display = "none";
 
 if (qrGenerateBtn) {
   qrGenerateBtn.addEventListener("click", () => {
-    const text = qrTextInput.value.trim();
-    const size = Number(qrSizeSelect.value) || 240;
+    const text = qrTextInput ? qrTextInput.value.trim() : "";
+    const size = qrSizeSelect ? Number(qrSizeSelect.value) || 240 : 240;
 
     if (!text) {
-      qrStatus.textContent = "QR: Enter text or URL first";
+      if (qrStatus) qrStatus.textContent = "QR: Enter text or URL first";
       return;
     }
 
-    qrStatus.textContent = "QR: Generating...";
+    if (qrStatus) qrStatus.textContent = "QR: Generating...";
     setQrImageWithFallback(qrImage, text, size, (ok, url, source) => {
       if (!ok || !url) {
-        qrStatus.textContent = "QR: Could not generate QR in this network/browser";
-        qrDownloadLink.classList.add("hidden");
+        if (qrStatus) qrStatus.textContent = "QR: Could not generate QR in this browser";
+        if (qrDownloadLink) qrDownloadLink.classList.add("hidden");
         return;
       }
-      qrDownloadLink.href = url;
-      qrDownloadLink.classList.remove("hidden");
-      qrStatus.textContent =
-        source === "fallback"
-          ? "QR: Fallback shown (scan may fail). Load QR library/network."
-          : "QR: Generated locally (scan ready)";
+      if (qrDownloadLink) {
+        qrDownloadLink.href = url;
+        qrDownloadLink.classList.remove("hidden");
+      }
+      if (!qrStatus) return;
+      if (source === "local") {
+        qrStatus.textContent = "QR: Generated locally (scan ready)";
+        return;
+      }
+      if (source === "remote") {
+        qrStatus.textContent = "QR: Generated using online backup (scan ready)";
+        return;
+      }
+      qrStatus.textContent = "QR: Fallback shown (scan may fail)";
     });
   });
 }
-
