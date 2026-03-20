@@ -1,0 +1,135 @@
+input:not([type="checkbox"]):not([type="range"]):focus,
+textarea:focus,
+.panel select:focus,
+.theme-control select:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
+  box-shadow: 0 0 0 4px var(--focus);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardStaggerIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.986);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroDrift {
+  0% {
+    transform: translateX(18%);
+  }
+
+  50% {
+    transform: translateX(4%);
+  }
+
+  100% {
+    transform: translateX(18%);
+  }
+}
+
+@keyframes floatPulse {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes sheenSweep {
+  0% {
+    transform: translateX(32%);
+  }
+
+  50% {
+    transform: translateX(-10%);
+  }
+
+  100% {
+    transform: translateX(32%);
+  }
+}
+
+@keyframes bgFloatA {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(-22px) translateX(18px);
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes bgFloatB {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(20px) translateX(-14px);
+  }
+
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-card {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .tool-card::after,
+  .open-btn,
+  .hero::before,
+  .hero-logo,
+  .top-bar::before,
+  .background-shape::before,
+  .background-shape::after {
+    transition: none;
+    animation: none !important;
+  }
+
+  .tool-card:hover {
+    transform: none;
+    background-position: 0 0, 130% 0;
+  }
+
+  .open-btn:hover {
+    background-position: 0 0, 130% 0;
+  }
+}

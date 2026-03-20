@@ -1,0 +1,257 @@
+@media (max-width: 760px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .side-nav {
+    display: none;
+  }
+
+  .workspace {
+    padding: 12px;
+  }
+
+  .top-bar {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .top-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-shell-icon {
+    left: 15px;
+    width: 15px;
+    height: 15px;
+    border-width: 1.8px;
+  }
+
+  .search-shell-icon::after {
+    width: 7px;
+    height: 2.2px;
+    right: -5px;
+    bottom: -3px;
+  }
+
+  #dashboardSearchInput {
+    height: 58px;
+    padding-left: 44px;
+    font-size: 1rem;
+  }
+
+  .hero-kicker {
+    margin-bottom: 12px;
+    font-size: 0.72rem;
+    padding: 6px 10px;
+  }
+
+  .hero-logo {
+    width: 102px;
+    height: 102px;
+    border-radius: 32px;
+    font-size: 1.8rem;
+  }
+
+  .hero-logo::after {
+    right: -9px;
+    top: -8px;
+  }
+
+  .hero-highlights {
+    margin-top: 14px;
+    gap: 8px;
+  }
+
+  .hero-highlights span {
+    font-size: 0.76rem;
+    padding: 7px 10px;
+  }
+
+  .tool-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    font-size: 1.95rem;
+  }
+
+  .tool-card[data-open-tool="sqlfmt"] .tool-icon {
+    font-size: 1.24rem;
+    letter-spacing: 0.03em;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    padding: 24px 18px;
+    min-height: auto;
+  }
+
+  .theme-control {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .password-output-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .password-output-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .password-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cron-result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cron-next-list {
+    grid-column: auto;
+  }
+
+  .cron-start-row {
+    gap: 6px;
+  }
+
+  .cron-start-row input[type="date"],
+  .cron-start-row input[type="number"] {
+    width: 100%;
+    max-width: none;
+  }
+
+  .cron-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #cronExpressionInput {
+    width: 100%;
+  }
+
+  .cron-next-controls select {
+    width: 100%;
+    max-width: 140px;
+  }
+
+  .case-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .case-counts {
+    font-size: 0.86rem;
+    margin-left: 0;
+  }
+
+  .case-theme-wrap {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .case-theme-select {
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .case-actions {
+    width: 100%;
+  }
+
+  .case-action-btn {
+    flex: 1 1 calc(50% - 6px);
+    text-align: center;
+  }
+
+  .workspace-head {
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+    gap: 10px;
+  }
+
+  .workspace-title-block {
+    text-align: left;
+  }
+
+  .workspace-head-spacer {
+    display: none;
+  }
+
+  .world-clock-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .world-clock-side {
+    width: 100%;
+    justify-items: start;
+  }
+
+  .game-tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .game-mode-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .game-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .dice-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ludo-track {
+    min-width: 300px;
+  }
+
+  .snake-grid {
+    gap: 1px;
+    padding: 4px;
+  }
+
+  .snake-number {
+    font-size: 0.48rem;
+  }
+
+  .snake-token,
+  .ludo-token {
+    width: 9px;
+    height: 9px;
+  }
+
+  .snake-cell[data-jump]::after {
+    font-size: 0.42rem;
+  }
+
+  .speed-final-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .json-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .social-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+}

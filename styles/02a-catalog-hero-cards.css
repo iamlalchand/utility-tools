@@ -1,0 +1,213 @@
+}
+
+.catalog-view,
+.tool-workspace {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.dashboard-search {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  display: grid;
+  gap: 10px;
+}
+
+.search-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.search-shell::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 18px;
+  background: linear-gradient(120deg, color-mix(in srgb, var(--primary) 22%, transparent), transparent 56%);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  z-index: -1;
+}
+
+.search-shell-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 17px;
+  height: 17px;
+  border: 2px solid color-mix(in srgb, var(--primary) 72%, var(--muted));
+  border-radius: 50%;
+  color: color-mix(in srgb, var(--primary) 72%, var(--muted));
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.search-shell-icon::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 2.6px;
+  border-radius: 999px;
+  background: currentColor;
+  right: -6px;
+  bottom: -3px;
+  transform: rotate(44deg);
+}
+
+#dashboardSearchInput {
+  width: 100%;
+  height: 70px;
+  padding: 0 18px 0 52px;
+  font-size: 1.12rem;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border));
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--input-bg) 96%, #ffffff), color-mix(in srgb, var(--input-bg) 84%, #ffffff)),
+    linear-gradient(118deg, color-mix(in srgb, var(--primary) 8%, transparent), transparent 62%);
+  box-shadow: 0 12px 22px color-mix(in srgb, var(--primary) 10%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.56);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background-position 0.26s ease;
+}
+
+#dashboardSearchInput:focus {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--primary) 52%, var(--border));
+  box-shadow: 0 16px 30px color-mix(in srgb, var(--primary) 18%, transparent), 0 0 0 4px var(--focus), inset 0 1px 0 rgba(255, 255, 255, 0.66);
+}
+
+.search-shell:focus-within::before {
+  opacity: 1;
+}
+
+#dashboardSearchInput::placeholder {
+  color: color-mix(in srgb, var(--muted) 88%, var(--text));
+}
+
+.tool-card.is-hidden {
+  display: none;
+}
+
+.hero {
+  border: 1px solid color-mix(in srgb, var(--primary) 16%, var(--border));
+  border-radius: 26px;
+  padding: 42px 22px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 11% 28%, color-mix(in srgb, var(--primary) 15%, transparent), transparent 42%),
+    radial-gradient(circle at 86% 12%, color-mix(in srgb, var(--primary-gradient-end) 18%, transparent), transparent 42%),
+    radial-gradient(circle at 50% 112%, color-mix(in srgb, var(--primary) 16%, transparent), transparent 52%),
+    linear-gradient(140deg, var(--hero-bg-start), var(--hero-bg-end));
+  box-shadow: 0 22px 44px color-mix(in srgb, var(--primary) 12%, transparent), var(--hero-shadow);
+  animation: fadeUp 0.35s ease both;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 22%, color-mix(in srgb, var(--primary) 9%, transparent) 50%, transparent 78%);
+  transform: translateX(24%);
+  pointer-events: none;
+  z-index: 0;
+  animation: heroDrift 10s ease-in-out infinite;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -120px;
+  top: -170px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, color-mix(in srgb, var(--primary-gradient-end) 24%, transparent), transparent 68%);
+  filter: blur(0.5px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-kicker {
+  margin: 0 auto 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--primary) 82%, var(--text));
+  border: 1px solid color-mix(in srgb, var(--primary) 26%, var(--border));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--card) 94%, #ffffff), color-mix(in srgb, var(--input-bg) 82%, #ffffff));
+  box-shadow: 0 10px 20px color-mix(in srgb, var(--primary) 12%, transparent);
+  backdrop-filter: blur(5px);
+}
+
+.hero-kicker::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-gradient-end));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 16%, transparent);
+}
+
+.hero-logo {
+  width: 126px;
+  height: 126px;
+  margin: 0 auto 16px;
+  border-radius: 38px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 26% 22%, rgba(255, 255, 255, 0.42), transparent 44%),
+    linear-gradient(150deg, color-mix(in srgb, var(--primary) 95%, #ffffff), var(--primary-gradient-end));
+  color: var(--on-primary);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  border: 1px solid color-mix(in srgb, var(--primary) 34%, var(--border));
+  box-shadow: 0 20px 34px color-mix(in srgb, var(--primary) 38%, transparent);
+  overflow: hidden;
+  animation: floatPulse 6s ease-in-out infinite;
+}
+
+.hero-logo::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 44px;
+  border: 1px solid color-mix(in srgb, var(--primary) 40%, var(--border));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 18%, transparent), transparent 62%);
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.hero-logo::after {
+  content: "✦";
+  position: absolute;
+  right: -12px;
+  top: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--card);
+  color: var(--primary);
+  border: 1px solid color-mix(in srgb, var(--primary) 42%, var(--border));
+  box-shadow: 0 8px 16px color-mix(in srgb, var(--primary) 22%, transparent);
+  font-size: 0.92rem;
+}

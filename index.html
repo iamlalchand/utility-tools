@@ -1,0 +1,1268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utility Suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/00-theme-variables.css">
+  <link rel="stylesheet" href="styles/01-layout-shell.css">
+  <link rel="stylesheet" href="styles/02a-catalog-hero-cards.css">
+  <link rel="stylesheet" href="styles/02b-catalog-hero-cards.css">
+  <link rel="stylesheet" href="styles/03a-catalog-panels-tools.css">
+  <link rel="stylesheet" href="styles/03b-catalog-panels-tools.css">
+  <link rel="stylesheet" href="styles/04a-footer-contact-tools.css">
+  <link rel="stylesheet" href="styles/04b-footer-contact-tools.css">
+  <link rel="stylesheet" href="styles/05a-games-and-advanced.css">
+  <link rel="stylesheet" href="styles/05b-games-and-advanced.css">
+  <link rel="stylesheet" href="styles/06a-motion-focus.css">
+  <link rel="stylesheet" href="styles/06b-responsive-1050.css">
+  <link rel="stylesheet" href="styles/06c-responsive-760.css">
+</head>
+<body>
+  <div class="background-shape"></div>
+
+  <div class="app-shell">
+    <aside class="side-nav">
+      <div class="side-brand">
+        <span class="side-brand-mark"><img class="brand-logo-img" src="assets/logo.svg" alt="Utility Suite logo"></span>
+        <span class="side-brand-text">Utility Suite</span>
+      </div>
+      <button class="nav-btn active" id="homeNavBtn" title="Home">
+        <span class="nav-icon">🏠</span><span class="nav-text">Home</span>
+      </button>
+      <button class="nav-btn" id="historyBackBtn" title="Back">
+        <span class="nav-icon">↩</span><span class="nav-text">Back</span>
+      </button>
+      <button class="nav-btn" data-nav-tool="calculator" title="Calculator">
+        <span class="nav-icon">🧮</span><span class="nav-text">Calculator</span>
+      </button>
+      <button class="nav-btn" data-nav-tool="notes" title="Notes">
+        <span class="nav-icon">📝</span><span class="nav-text">Quick Notes</span>
+      </button>
+      <button class="nav-btn" data-nav-tool="contact" title="Contact">
+        <span class="nav-icon">☎</span><span class="nav-text">Contact</span>
+      </button>
+      <button class="nav-btn" data-nav-tool="time" title="Time">
+        <span class="nav-icon">🕒</span><span class="nav-text">Current Time</span>
+      </button>
+      <!-- Future tool (hidden): Currency Converter -->
+      <!--
+      <button class="nav-btn" data-nav-tool="currency" title="Currency Converter">
+        <span class="nav-icon">💱</span><span class="nav-text">Currency Converter</span>
+      </button>
+      -->
+      <button class="nav-btn" data-nav-tool="qr" title="QR Code Generator">
+        <span class="nav-icon">📱</span><span class="nav-text">QR Generator</span>
+      </button>
+      <button class="nav-btn" data-nav-tool="pdf" title="PDF Utility Hub">
+        <span class="nav-icon">📄</span><span class="nav-text">PDF Utility Hub</span>
+      </button>
+      <!-- Future tool (hidden): File Share -->
+      <!--
+      <button class="nav-btn" data-nav-tool="fileshare" title="File Share">
+        <span class="nav-icon">🔗</span><span class="nav-text">File Share</span>
+      </button>
+      -->
+      <!-- Future tool (hidden): Games Zone -->
+      <!--
+      <button class="nav-btn" data-nav-tool="games" title="Games">
+        <span class="nav-icon">🎮</span><span class="nav-text">Games Zone</span>
+      </button>
+      -->
+    </aside>
+
+    <main class="workspace">
+      <header class="top-bar">
+        <div class="brand">
+          <span class="brand-mark"><img class="brand-logo-img" src="assets/logo.svg" alt="Utility Suite logo"></span>
+          <div>
+            <h1>Utility Suite</h1>
+            <p>Smart tools for daily tasks</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button id="topBackBtn" class="ghost">Back</button>
+          <button id="topHomeBtn" class="ghost">Home</button>
+          <label class="theme-control" for="themeSelect">
+            <span id="themeLabel">Theme</span>
+            <select id="themeSelect" aria-label="Select theme">
+              <option value="default">Corporate Light</option>
+              <option value="midnight">Midnight</option>
+              <option value="emerald">Emerald</option>
+              <option value="sunset">Sunset</option>
+              <option value="ocean">Ocean Breeze</option>
+              <option value="graphite">Graphite</option>
+              <option value="rose">Rose Bloom</option>
+              <option value="amber">Amber Glow</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <section class="catalog-view" id="catalogView">
+        <div class="hero">
+          <p class="hero-kicker">All-In-One Workspace</p>
+          <div class="hero-logo" aria-hidden="true">
+            <img class="brand-logo-img" src="assets/logo.svg" alt="Utility Suite logo">
+          </div>
+          <h2 id="heroTitle">Choose a Utility Tool</h2>
+          <p id="heroSubtitle">Component-wise workspace: click a tool card and open only that tool with full functionality.</p>
+          <div class="hero-highlights" aria-hidden="true">
+            <span>Fast Tools</span>
+            <span>Clean UI</span>
+            <span>One Click Access</span>
+          </div>
+        </div>
+
+        <div class="dashboard-search">
+          <div class="search-shell">
+            <span class="search-shell-icon" aria-hidden="true"></span>
+            <input id="dashboardSearchInput" type="search" placeholder="Search tools ....">
+          </div>
+          <p id="dashboardSearchMeta" class="result">Showing all tools</p>
+        </div>
+
+        <section class="tool-grid">
+          <article class="tool-card" data-open-tool="calculator">
+            <p class="tool-icon">⌗</p>
+            <h3>Calculator</h3>
+            <p>Quick arithmetic operations for daily use.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <!-- Future tool (hidden): Unit Converter -->
+          <!--
+          <article class="tool-card" data-open-tool="converter">
+            <p class="tool-icon">⇄</p>
+            <h3>Unit Converter</h3>
+            <p>Convert kilometers to miles in one click.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): Currency Converter -->
+          <!--
+          <article class="tool-card" data-open-tool="currency">
+            <p class="tool-icon">💱</p>
+            <h3>Currency Converter</h3>
+            <p>Live exchange rates with fluctuation trend.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <article class="tool-card" data-open-tool="age">
+            <p class="tool-icon">◎</p>
+            <h3>Age Calculator</h3>
+            <p>Find age from date of birth instantly.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="password">
+            <p class="tool-icon">✦</p>
+            <h3>Password Generator</h3>
+            <p>Create strong random passwords quickly.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="notes">
+            <p class="tool-icon">✎</p>
+            <h3>Quick Notes</h3>
+            <p>Save reusable notes in browser storage.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="contact">
+            <p class="tool-icon">☎</p>
+            <h3>Contact Us</h3>
+            <p>Phone, email and social media details in one place.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="time">
+            <p class="tool-icon">◷</p>
+            <h3>Global Clock</h3>
+            <p>Current time + world clocks with all-country support.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="qr">
+            <p class="tool-icon">▦</p>
+            <h3>QR Code Generator</h3>
+            <p>Create QR codes for links, text and contact details.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="pdf">
+            <p class="tool-icon">▤</p>
+            <h3>PDF Utility Hub</h3>
+            <p>Text/Image/Word to PDF and PDF to Word conversion.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="passpin">
+            <p class="tool-icon">◎</p>
+            <h3>Pass / PIN Generator</h3>
+            <p>Generate secure passwords and quick numeric PINs.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="case">
+            <p class="tool-icon">Aa</p>
+            <h3>Case Converter</h3>
+            <p>Convert text to upper, lower, title and more.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="encode">
+            <p class="tool-icon">{ }</p>
+            <h3>Encoder / Decoder</h3>
+            <p>Encode/decode Base64 and URL formats quickly.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <!-- Future tool (hidden): Diff Checker -->
+          <!--
+          <article class="tool-card" data-open-tool="diff">
+            <p class="tool-icon">Δ</p>
+            <h3>Diff Checker</h3>
+            <p>Compare two texts and inspect changed lines.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <article class="tool-card" data-open-tool="regex">
+            <p class="tool-icon">.*</p>
+            <h3>Regex Tester</h3>
+            <p>Test regular expressions with real-time matching output.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="cron">
+            <p class="tool-icon">⏱</p>
+            <h3>Cron Generator</h3>
+            <p>Build cron expressions for scheduled tasks.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="budget">
+            <p class="tool-icon">₹</p>
+            <h3>Budget Box</h3>
+            <p>Set income, track expenses and see remaining balance.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="split">
+            <p class="tool-icon">🤝</p>
+            <h3>Split Expense</h3>
+            <p>Split expenses fairly between friends and view settlements.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="emi">
+            <p class="tool-icon">🏦</p>
+            <h3>EMI Calculator</h3>
+            <p>Calculate EMI for loans and credit card repayment plans.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="jsonfmt">
+            <p class="tool-icon">{ }</p>
+            <h3>JSON Formatter &amp; Validator</h3>
+            <p>Validate, prettify and minify JSON instantly.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <article class="tool-card" data-open-tool="sqlfmt">
+            <p class="tool-icon">SQL</p>
+            <h3>SQL Formatter</h3>
+            <p>Beautify messy SQL queries for cleaner reading.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+
+          <!-- Future tool (hidden): Wallpaper Gallery -->
+          <!--
+          <article class="tool-card" data-open-tool="wallpaper">
+            <p class="tool-icon">🖼</p>
+            <h3>Wallpaper Gallery</h3>
+            <p>Load high-quality wallpapers by category and download instantly.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): Speed Test -->
+          <!--
+          <article class="tool-card" data-open-tool="speed">
+            <p class="tool-icon">⚡</p>
+            <h3>Speed Test</h3>
+            <p>Check estimated network download speed in one click.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): Weather Anywhere -->
+          <!--
+          <article class="tool-card" data-open-tool="weather">
+            <p class="tool-icon">🌦</p>
+            <h3>Weather Anywhere</h3>
+            <p>Search city weather, rain alert and 7-day forecast.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): News Feed -->
+          <!--
+          <article class="tool-card" data-open-tool="news">
+            <p class="tool-icon">📰</p>
+            <h3>News Feed</h3>
+            <p>Load country-wise latest headlines with API provider key.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): Crypto Tracker -->
+          <!--
+          <article class="tool-card" data-open-tool="crypto">
+            <p class="tool-icon">₿</p>
+            <h3>Crypto Tracker</h3>
+            <p>Live crypto price tracker and quick coin converter.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): Developer Hub -->
+          <!--
+          <article class="tool-card" data-open-tool="devhub">
+            <p class="tool-icon">🌐</p>
+            <h3>Developer Hub</h3>
+            <p>IP lookup, DNS resolve and URL metadata in one place.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): Fun API Hub -->
+          <!--
+          <article class="tool-card" data-open-tool="funapi">
+            <p class="tool-icon">🎲</p>
+            <h3>Fun API Hub</h3>
+            <p>Random jokes, quotes and facts for quick break time.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): File Share -->
+          <!--
+          <article class="tool-card" data-open-tool="fileshare">
+            <p class="tool-icon">🔗</p>
+            <h3>File Share</h3>
+            <p>Create a share code + QR and receive files via code.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): Love Compatibility -->
+          <!--
+          <article class="tool-card" data-open-tool="love">
+            <p class="tool-icon">❤</p>
+            <h3>Love Compatibility</h3>
+            <p>Get a fun compatibility score with personalized message.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+
+          <!-- Future tool (hidden): Games Zone -->
+          <!--
+          <article class="tool-card" data-open-tool="games">
+            <p class="tool-icon">🎮</p>
+            <h3>Games Zone</h3>
+            <p>Play full-board Tic Tac Toe, Ludo and Snake &amp; Ladder.</p>
+            <button class="open-btn">Open Tool</button>
+          </article>
+          -->
+        </section>
+      </section>
+
+      <section class="tool-workspace hidden" id="toolWorkspace">
+        <div class="workspace-head">
+          <button id="backToCatalogBtn" class="ghost icon-only" title="Back to tools" aria-label="Back to tools">←</button>
+          <div class="workspace-title-block">
+            <h2 id="workspaceTitle">Tool Workspace</h2>
+            <p id="workspaceDescription">Select a tool card to start using it.</p>
+          </div>
+          <span class="workspace-head-spacer" aria-hidden="true"></span>
+        </div>
+
+        <div class="tool-panel-wrap">
+          <section class="panel card" data-tool-panel="calculator">
+            <div class="card-head"><span class="tag">CALC</span><h2>Calculator</h2></div>
+            <input id="calcA" type="number" placeholder="First number">
+            <input id="calcB" type="number" placeholder="Second number">
+            <div class="row">
+              <button data-op="+">+</button>
+              <button data-op="-">-</button>
+              <button data-op="*">×</button>
+              <button data-op="/">÷</button>
+            </div>
+            <p class="result" id="calcResult">Result: -</p>
+          </section>
+
+          <section class="panel card" data-tool-panel="converter">
+            <div class="card-head"><span class="tag">UNIT</span><h2>Unit Converter</h2></div>
+            <input id="kmInput" type="number" placeholder="Kilometers">
+            <button id="kmToMilesBtn">Convert to Miles</button>
+            <p class="result" id="unitResult">Miles: -</p>
+          </section>
+
+          <section class="panel card" data-tool-panel="age">
+            <div class="card-head"><span class="tag">DATE</span><h2>Age Calculator</h2></div>
+            <input id="dobInput" type="date">
+            <button id="ageBtn">Calculate Age</button>
+            <p class="result" id="ageResult">Age: -</p>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="password">
+            <div class="card-head"><span class="tag">SAFE</span><h2>Password Generator</h2></div>
+            <p class="helper-text">Secure random password with live strength score, length slider and character controls.</p>
+            <div class="password-generator">
+              <div class="password-output-wrap">
+                <input id="passOutput" type="text" readonly placeholder="Generated password appears here">
+                <div class="password-output-actions">
+                  <button id="regenPassBtn" class="ghost password-icon-btn" title="Regenerate password" aria-label="Regenerate password">↻</button>
+                  <button id="copyPassBtn">Copy Password</button>
+                </div>
+              </div>
+
+              <div class="password-strength-row">
+                <div class="password-strength-track">
+                  <div id="passStrengthFill"></div>
+                </div>
+                <p id="passStrengthLabel" class="password-strength-label">Strength: -</p>
+              </div>
+
+              <div class="password-settings">
+                <div class="password-length-row">
+                  <label for="passLen" class="field-label">Password Length <strong id="passLenValue">16</strong></label>
+                  <input id="passLen" type="range" min="6" max="64" value="16">
+                </div>
+
+                <div class="password-options" role="group" aria-label="Password character types">
+                  <label class="password-check"><input id="passOptUpper" type="checkbox" checked>Uppercase</label>
+                  <label class="password-check"><input id="passOptLower" type="checkbox" checked>Lowercase</label>
+                  <label class="password-check"><input id="passOptNumber" type="checkbox" checked>Numbers</label>
+                  <label class="password-check"><input id="passOptSymbol" type="checkbox" checked>Symbols</label>
+                </div>
+              </div>
+
+              <div class="password-actions">
+                <button id="genPassBtn">Generate Password</button>
+                <p class="result" id="passResult">Password Generator: Ready</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel card" data-tool-panel="notes">
+            <div class="card-head"><span class="tag">NOTE</span><h2>Notes</h2></div>
+            <textarea id="notesArea" rows="6" placeholder="Write quick notes..."></textarea>
+            <button id="saveNotesBtn">Save Notes</button>
+            <p class="result" id="notesStatus">Not saved yet</p>
+          </section>
+
+          <section class="panel card panel-wide contact-panel" data-tool-panel="contact">
+            <div class="card-head"><span class="tag">CONTACT</span><h2>Contact Utility Suite</h2></div>
+            <p class="helper-text">Official support details and social channels. Link values are kept in one place so you can update later easily.</p>
+            <div class="contact-grid">
+              <article class="contact-card">
+                <h3>Support Channels</h3>
+                <p><strong>Email:</strong> <a data-contact-href="email" data-contact-text="email" href="#">support@ssutilitysuite.com</a></p>
+                <p><strong>Phone (India):</strong> <a data-contact-href="phone_india" data-contact-text="phone_india" href="#">+91 78918 67859</a></p>
+                <p><strong>Phone (Global):</strong> <a data-contact-href="phone_global" data-contact-text="phone_global" href="#">+91 7891867859</a></p>
+                <p><strong>WhatsApp:</strong> <a data-contact-href="whatsapp" data-contact-text="whatsapp" href="#">+91 78918 67859</a></p>
+                <p><strong>Website:</strong> <a data-contact-href="website" data-contact-text="website" href="#">https://ssutilitysuite.com</a></p>
+              </article>
+              <article class="contact-card">
+                <h3>Office Details</h3>
+                <p><strong>India Office:</strong> <span data-contact-text="address_india">Jaipur, Rajasthan, India</span></p>
+                <p><strong>Global Office:</strong> <span data-contact-text="address_global">Wilmington, DE, USA</span></p>
+                <p><strong>Hours:</strong> <span data-contact-text="business_hours">Mon-Sat, 10:00 AM - 7:00 PM IST</span></p>
+                <p><strong>Response Time:</strong> <span data-contact-text="response_time">Within 24 working hours</span></p>
+              </article>
+            </div>
+            <h3 class="sub-head">Follow SS</h3>
+            <div class="social-links">
+              <a class="social-link" data-social-link="x" href="#" aria-label="X">
+                <span class="social-icon">𝕏</span>
+                <span>X</span>
+              </a>
+              <a class="social-link" data-social-link="facebook" href="#" aria-label="Facebook">
+                <span class="social-icon">f</span>
+                <span>Facebook</span>
+              </a>
+              <a class="social-link" data-social-link="instagram" href="#" aria-label="Instagram">
+                <span class="social-icon">◎</span>
+                <span>Instagram</span>
+              </a>
+              <a class="social-link" data-social-link="linkedin" href="#" aria-label="LinkedIn">
+                <span class="social-icon">in</span>
+                <span>LinkedIn</span>
+              </a>
+              <a class="social-link" data-social-link="youtube" href="#" aria-label="YouTube">
+                <span class="social-icon">▶</span>
+                <span>YouTube</span>
+              </a>
+              <a class="social-link" data-social-link="github" href="#" aria-label="GitHub">
+                <span class="social-icon">{ }</span>
+                <span>GitHub</span>
+              </a>
+            </div>
+            <p class="result">Share actual social URLs and I will plug them in.</p>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="time">
+            <div class="card-head"><span class="tag">TIME</span><h2 id="globalClockTitle">Global Clock</h2></div>
+            <p class="clock" id="clockText">--:--:--</p>
+            <p class="helper-text" id="globalClockHelp">Step 1: Select a country to check its current time. Step 2: Add countries below to track multiple clocks.</p>
+            <label class="field-label" id="timeCountryLabel" for="timeCountrySelect">Check Time In Country</label>
+            <select id="timeCountrySelect">
+              <option value="">Select country</option>
+            </select>
+            <p class="clock-secondary" id="timeCountryClock">Selected Country Time: --:--:--</p>
+            <button id="refreshTimeBtn">Refresh Time</button>
+            <h3 class="sub-head" id="worldClockSubTitle">World Clocks</h3>
+            <label class="field-label" id="worldClockManageLabel" for="countryClockSelect">Manage Countries In World Clock List</label>
+            <div class="inline-actions">
+              <select id="countryClockSelect">
+                <option value="">Select country</option>
+              </select>
+              <button id="addCountryClockBtn">Add Country Clock</button>
+              <button id="resetCountryClockBtn" class="ghost">Reset Default</button>
+            </div>
+            <p class="result" id="countrySupportStatus">Country support: Ready</p>
+            <div id="countryInfoCard" class="output-item">Select a country to view details.</div>
+            <div id="worldClockList" class="output-list"></div>
+            <button id="refreshWorldClockBtn">Refresh World Times</button>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="currency">
+            <div class="card-head"><span class="tag">FX</span><h2 id="currencyTitle">Currency Converter (Live)</h2></div>
+            <div class="inline-actions">
+              <input id="fxAmountInput" type="number" min="0" step="0.01" value="1" placeholder="Amount">
+              <select id="fxBaseCurrency"></select>
+              <select id="fxTargetCurrency"></select>
+            </div>
+            <div class="inline-actions">
+              <button id="convertFxBtn">Convert Now</button>
+              <button id="swapFxBtn" class="ghost">Swap</button>
+              <button id="refreshFxBtn" class="ghost">Refresh Rate</button>
+            </div>
+            <p class="result" id="fxResult">FX: Ready</p>
+            <p class="result" id="fxRateInfo">Live Rate: -</p>
+            <p class="result" id="fxTrendInfo">Trend: -</p>
+            <p class="result" id="fxUpdatedAt">Last Updated: -</p>
+          </section>
+
+          <section class="panel card" data-tool-panel="qr">
+            <div class="card-head"><span class="tag">QR</span><h2>QR Code Generator</h2></div>
+            <input id="qrTextInput" type="text" placeholder="Enter text or URL">
+            <select id="qrSizeSelect">
+              <option value="180">180 x 180</option>
+              <option value="240" selected>240 x 240</option>
+              <option value="320">320 x 320</option>
+            </select>
+            <button id="qrGenerateBtn">Generate QR Code</button>
+            <div class="qr-preview">
+              <img id="qrImage" alt="Generated QR code" src="">
+            </div>
+            <a id="qrDownloadLink" class="ghost hidden" download="qr-code.png">Download QR</a>
+            <p class="result" id="qrStatus">QR: Not generated yet</p>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="pdf">
+            <div class="card-head"><span class="tag">PDF</span><h2>PDF Utility Hub</h2></div>
+
+            <h3 class="sub-head">Text to PDF</h3>
+            <textarea id="pdfTextInput" rows="5" placeholder="Type or paste text for PDF..."></textarea>
+            <button id="textToPdfBtn">Download Text as PDF</button>
+
+            <h3 class="sub-head">Images to PDF</h3>
+            <input id="pdfImageInput" type="file" accept="image/*" multiple>
+            <button id="imagesToPdfBtn">Convert Images to PDF</button>
+
+            <h3 class="sub-head">Word/TXT to PDF</h3>
+            <input id="wordToPdfInput" type="file" accept=".doc,.docx,.txt">
+            <button id="wordToPdfBtn">Convert File to PDF</button>
+
+            <h3 class="sub-head">PDF to Word</h3>
+            <input id="pdfToWordInput" type="file" accept="application/pdf">
+            <button id="pdfToWordBtn">Convert PDF to Word (.doc)</button>
+
+            <p class="result" id="pdfStatus">PDF Hub: Ready</p>
+          </section>
+
+          <section class="panel card" data-tool-panel="passpin">
+            <div class="card-head"><span class="tag">SAFE</span><h2>Pass / PIN Generator</h2></div>
+            <input id="passPinLength" type="number" min="4" max="32" value="12" placeholder="Password length">
+            <div class="inline-actions">
+              <button id="generateStrongPassBtn">Generate Password</button>
+              <button id="generatePinBtn">Generate PIN</button>
+            </div>
+            <input id="passPinOutput" type="text" readonly placeholder="Generated output">
+            <button id="copyPassPinBtn" class="ghost">Copy Output</button>
+            <p class="result" id="passPinStatus">Pass/PIN: Ready</p>
+          </section>
+
+          <section class="panel card panel-wide case-panel" data-tool-panel="case">
+            <div class="card-head"><span class="tag">TEXT</span><h2>Case Converter</h2></div>
+            <textarea id="caseEditor" rows="8" placeholder="Type or paste your text here..."></textarea>
+
+            <div class="case-toolbar">
+              <div class="case-utils">
+                <button id="caseCopyBtn" class="ghost case-util-btn" title="Copy text" aria-label="Copy text">📋</button>
+                <button id="caseDownloadBtn" class="ghost case-util-btn" title="Download text" aria-label="Download text">⬇</button>
+                <button id="caseClearBtn" class="ghost case-util-btn" title="Clear text" aria-label="Clear text">🗑</button>
+              </div>
+              <div class="case-theme-wrap">
+                <label class="field-label" for="caseThemeSelect">Editor Theme</label>
+                <select id="caseThemeSelect" class="case-theme-select">
+                  <option value="blush">Blush Light</option>
+                  <option value="slate">Slate</option>
+                  <option value="coffee">Coffee</option>
+                </select>
+              </div>
+              <p id="caseCounts" class="case-counts">Character Count: 0 | Word Count: 0 | Line Count: 0</p>
+            </div>
+
+            <div class="case-actions">
+              <button class="case-action-btn" data-case="sentence">Sentence case</button>
+              <button class="case-action-btn" data-case="lower">lower case</button>
+              <button class="case-action-btn" data-case="upper">UPPER CASE</button>
+              <button class="case-action-btn" data-case="capitalized">Capitalized Case</button>
+              <button class="case-action-btn" data-case="alternating">aLtErNaTiNg cAsE</button>
+              <button class="case-action-btn" data-case="title">Title Case</button>
+              <button class="case-action-btn" data-case="invert">InVeRsE cAsE</button>
+            </div>
+
+            <p class="result" id="caseStatus">Case Converter: Ready</p>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="encode">
+            <div class="card-head"><span class="tag">CODE</span><h2>Encoder / Decoder</h2></div>
+            <select id="encodeType">
+              <option value="base64">Base64</option>
+              <option value="url">URL Encode</option>
+            </select>
+            <textarea id="encodeInput" rows="4" placeholder="Enter text to encode/decode..."></textarea>
+            <div class="inline-actions">
+              <button id="encodeBtn">Encode</button>
+              <button id="decodeBtn">Decode</button>
+            </div>
+            <textarea id="encodeOutput" rows="4" readonly placeholder="Output..."></textarea>
+            <p class="result" id="encodeStatus">Encoder/Decoder: Ready</p>
+          </section>
+
+          <section class="panel card panel-wide panel-full" data-tool-panel="diff">
+            <div class="card-head"><span class="tag">DIFF</span><h2>Diff Checker</h2></div>
+            <textarea id="diffLeft" rows="5" placeholder="Original text..."></textarea>
+            <textarea id="diffRight" rows="5" placeholder="Updated text..."></textarea>
+            <button id="runDiffBtn">Compare Texts</button>
+            <p class="result" id="diffSummary">Diff Checker: Ready</p>
+            <pre id="diffOutput" class="output-box"></pre>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="regex">
+            <div class="card-head"><span class="tag">REGEX</span><h2>Regex Tester</h2></div>
+            <input id="regexPattern" type="text" placeholder="Regex pattern, e.g. \\b\\w+@\\w+\\.\\w+\\b">
+            <input id="regexFlags" type="text" placeholder="Flags, e.g. gi">
+            <textarea id="regexText" rows="5" placeholder="Test text..."></textarea>
+            <button id="runRegexBtn">Run Regex</button>
+            <p class="result" id="regexSummary">Regex Tester: Ready</p>
+            <pre id="regexOutput" class="output-box"></pre>
+          </section>
+
+          <section class="panel card panel-wide cron-panel" data-tool-panel="cron">
+            <div class="card-head"><span class="tag">CRON</span><h2>Cron Generator</h2></div>
+
+            <section class="cron-block">
+              <h3 class="sub-head">Generate cron expression</h3>
+              <div class="cron-tabs" role="tablist" aria-label="Cron mode">
+                <button class="cron-tab active" data-cron-tab="minutes" role="tab" aria-selected="true">Minutes</button>
+                <button class="cron-tab" data-cron-tab="hourly" role="tab" aria-selected="false">Hourly</button>
+                <button class="cron-tab" data-cron-tab="daily" role="tab" aria-selected="false">Daily</button>
+                <button class="cron-tab" data-cron-tab="weekly" role="tab" aria-selected="false">Weekly</button>
+                <button class="cron-tab" data-cron-tab="monthly" role="tab" aria-selected="false">Monthly</button>
+                <button class="cron-tab" data-cron-tab="yearly" role="tab" aria-selected="false">Yearly</button>
+              </div>
+              <div id="cronTemplateFields" class="cron-template-fields"></div>
+              <div class="cron-generate-row">
+                <button id="cronGenerateBtn">Generate</button>
+              </div>
+            </section>
+
+            <section class="cron-block">
+              <h3 class="sub-head">List next scheduled dates</h3>
+              <div class="cron-inline">
+                <label class="field-label" for="cronExpressionInput">Enter your cron expression</label>
+                <input id="cronExpressionInput" type="text" placeholder="e.g. */5 * * * *">
+                <button id="cronCalcBtn" class="ghost">Calculate next dates</button>
+              </div>
+            </section>
+
+            <section class="cron-block">
+              <h3 class="sub-head">Result</h3>
+              <div class="cron-result-grid">
+                <p class="field-label">Start date</p>
+                <div class="cron-start-row">
+                  <input id="cronStartDate" type="date">
+                  <span>-</span>
+                  <input id="cronStartHour" type="number" min="0" max="23" value="12" placeholder="HH">
+                  <span>:</span>
+                  <input id="cronStartMinute" type="number" min="0" max="59" value="00" placeholder="MM">
+                </div>
+                <p class="field-label">Cron format</p>
+                <p id="cronBuiltExpression" class="cron-expression-view">* * * * *</p>
+                <p class="field-label">Next scheduled dates</p>
+                <div class="cron-next-controls">
+                  <select id="cronNextCount">
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                  </select>
+                </div>
+                <ol id="cronNextList" class="cron-next-list"></ol>
+              </div>
+            </section>
+
+            <p class="result" id="cronSummary">Cron Generator: Ready</p>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="budget">
+            <div class="card-head"><span class="tag">BUDGET</span><h2>Budget Box</h2></div>
+            <div class="inline-actions">
+              <input id="budgetIncomeInput" type="number" min="0" step="0.01" placeholder="Set total income">
+              <button id="setBudgetIncomeBtn">Set Income</button>
+            </div>
+            <div class="inline-actions">
+              <input id="budgetExpenseLabel" type="text" placeholder="Expense label">
+              <input id="budgetExpenseAmount" type="number" min="0" step="0.01" placeholder="Expense amount">
+              <button id="addBudgetExpenseBtn">Add Expense</button>
+            </div>
+            <p class="result" id="budgetSummary">Budget Box: Ready</p>
+            <div id="budgetList" class="output-list"></div>
+            <button id="clearBudgetBtn" class="ghost">Clear Budget Data</button>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="split">
+            <div class="card-head"><span class="tag">SPLIT</span><h2>Split Expense (Friends)</h2></div>
+            <p class="helper-text">Add friends, record expenses, and see who should pay whom.</p>
+            <div class="split-layout">
+              <article class="split-card">
+                <h3>Friends</h3>
+                <textarea id="splitFriendsInput" rows="3" placeholder="Enter friend names separated by comma or new line"></textarea>
+                <button id="splitLoadFriendsBtn">Load Friends</button>
+              </article>
+              <article class="split-card">
+                <h3>Add Expense</h3>
+                <input id="splitNoteInput" type="text" placeholder="Expense note (e.g. Dinner)">
+                <input id="splitAmountInput" type="number" min="0" step="0.01" placeholder="Amount">
+                <select id="splitPaidBySelect"></select>
+                <button id="splitAddExpenseBtn">Add Expense</button>
+              </article>
+            </div>
+            <p class="result" id="splitSummary">Split Expense: Add friends to start.</p>
+            <div class="split-layout">
+              <article class="split-card">
+                <h3>Expenses</h3>
+                <div id="splitExpenseList" class="output-list"></div>
+              </article>
+              <article class="split-card">
+                <h3>Settlements</h3>
+                <div id="splitSettlementList" class="output-list"></div>
+              </article>
+            </div>
+            <button id="splitClearBtn" class="ghost">Clear Split Data</button>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="emi">
+            <div class="card-head"><span class="tag">EMI</span><h2>EMI Calculator (Loan/Credit Card)</h2></div>
+            <div class="inline-actions">
+              <select id="emiTypeSelect">
+                <option value="loan">Loan EMI</option>
+                <option value="credit">Credit Card EMI</option>
+              </select>
+              <input id="emiAmountInput" type="number" min="0" step="0.01" placeholder="Principal amount">
+              <input id="emiRateInput" type="number" min="0" step="0.01" placeholder="Annual interest %">
+              <input id="emiMonthsInput" type="number" min="1" step="1" placeholder="Tenure (months)">
+            </div>
+            <div class="inline-actions">
+              <button id="emiCalcBtn">Calculate EMI</button>
+            </div>
+            <p class="result" id="emiSummary">EMI Calculator: Ready</p>
+            <div class="kpi-grid" id="emiKpiGrid">
+              <article class="kpi-card"><p>Monthly EMI</p><strong id="emiMonthlyValue">-</strong></article>
+              <article class="kpi-card"><p>Total Interest</p><strong id="emiInterestValue">-</strong></article>
+              <article class="kpi-card"><p>Total Payment</p><strong id="emiTotalValue">-</strong></article>
+            </div>
+            <div id="emiScheduleList" class="output-list"></div>
+          </section>
+
+          <section class="panel card panel-wide panel-full json-panel" data-tool-panel="jsonfmt">
+            <div class="card-head"><span class="tag">JSON</span><h2>JSON Formatter &amp; Validator</h2></div>
+            <div class="json-workbench">
+              <article class="json-editor-card">
+                <p class="field-label">Input JSON</p>
+                <textarea id="jsonInput" class="json-editor" rows="16" placeholder='Paste JSON here...'></textarea>
+              </article>
+
+              <aside class="json-actions">
+                <button id="jsonValidateBtn">Validate</button>
+                <button id="jsonFormatBtn">Format / Beautify</button>
+                <select id="jsonIndentSelect">
+                  <option value="2" selected>2 spaces</option>
+                  <option value="4">4 spaces</option>
+                  <option value="tab">Tab indent</option>
+                </select>
+                <button id="jsonMinifyBtn">Minify / Compact</button>
+                <button id="jsonCopyBtn" class="ghost">Copy Output</button>
+                <button id="jsonUploadBtn" class="ghost">Upload JSON</button>
+                <input id="jsonUploadInput" type="file" accept=".json,application/json" class="hidden">
+                <button id="jsonDownloadBtn" class="ghost">Download Output</button>
+                <button id="jsonClearBtn" class="ghost">Clear</button>
+              </aside>
+
+              <article class="json-editor-card">
+                <p class="field-label">Output</p>
+                <textarea id="jsonOutput" class="json-editor" rows="16" readonly placeholder="Output will appear here."></textarea>
+              </article>
+            </div>
+            <p class="result" id="jsonStatus">JSON Formatter: Ready</p>
+          </section>
+
+          <section class="panel card panel-wide panel-full" data-tool-panel="sqlfmt">
+            <div class="card-head"><span class="tag">SQL</span><h2>SQL Formatter</h2></div>
+            <textarea id="sqlInput" rows="8" placeholder="Paste SQL query here..."></textarea>
+            <div class="inline-actions">
+              <button id="sqlFormatBtn">Format SQL</button>
+              <button id="sqlMinifyBtn">Minify SQL</button>
+              <button id="sqlParseBtn" class="ghost">Parse SQL</button>
+              <button id="sqlCopyBtn" class="ghost">Copy Output</button>
+              <button id="sqlClearBtn" class="ghost">Clear</button>
+            </div>
+            <p class="result" id="sqlStatus">SQL Formatter: Ready</p>
+            <pre id="sqlOutput" class="output-box mono">Formatted SQL will appear here.</pre>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="wallpaper">
+            <div class="card-head"><span class="tag">WALL</span><h2>Wallpaper Gallery</h2></div>
+            <div class="inline-actions">
+              <select id="wallpaperCategory">
+                <option value="nature">Nature</option>
+                <option value="city">City</option>
+                <option value="cars">Cars</option>
+                <option value="technology">Technology</option>
+                <option value="minimal">Minimal</option>
+              </select>
+              <select id="wallpaperCount">
+                <option value="4">4 Wallpapers</option>
+                <option value="6" selected>6 Wallpapers</option>
+                <option value="8">8 Wallpapers</option>
+              </select>
+              <button id="loadWallpapersBtn">Load Wallpapers</button>
+            </div>
+            <p class="result" id="wallpaperStatus">Wallpaper: Ready</p>
+            <div id="wallpaperGrid" class="media-grid"></div>
+          </section>
+
+          <section class="panel card" data-tool-panel="speed">
+            <div class="card-head"><span class="tag">NET</span><h2>Speed Test</h2></div>
+            <label class="field-label" for="speedBytesSelect">Download Size</label>
+            <select id="speedBytesSelect">
+              <option value="5000000">5 MB</option>
+              <option value="10000000" selected>10 MB</option>
+              <option value="25000000">25 MB</option>
+            </select>
+            <button id="runSpeedTestBtn">Run Speed Test</button>
+            <p class="result" id="speedTestResult">Current Speed: -</p>
+            <p class="result" id="speedTestMeta">Latency/throughput estimate will appear here.</p>
+            <div class="speed-progress">
+              <div class="speed-progress-bar" id="speedProgressBar"></div>
+            </div>
+            <section class="speed-final hidden" id="speedFinalCard">
+              <div class="speed-final-grid">
+                <article class="speed-kpi">
+                  <p>Download</p>
+                  <strong id="speedFinalDownload">-</strong>
+                </article>
+                <article class="speed-kpi">
+                  <p>Upload</p>
+                  <strong id="speedFinalUpload">-</strong>
+                </article>
+              </div>
+              <p class="result speed-extra" id="speedFinalLatency">Latency: -</p>
+              <p class="result speed-extra" id="speedFinalServer">Server: -</p>
+              <p class="result speed-verdict" id="speedFinalVerdict">Run test to see final network verdict.</p>
+            </section>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="weather">
+            <div class="card-head"><span class="tag">WX</span><h2>Weather Anywhere Tool</h2></div>
+            <div class="inline-actions">
+              <input id="weatherCityInput" type="text" placeholder="Enter city name (e.g. New Delhi)">
+              <button id="weatherSearchBtn">Get Weather</button>
+            </div>
+            <p class="result" id="weatherCurrentResult">Weather: Search a city to start.</p>
+            <p class="result" id="weatherMetaResult">Rain alert and 7-day forecast will appear below.</p>
+            <div id="weatherForecastList" class="output-list"></div>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="news">
+            <div class="card-head"><span class="tag">NEWS</span><h2>Latest News Feed</h2></div>
+            <div class="api-grid">
+              <article class="api-card">
+                <h3>API Setup</h3>
+                <select id="newsProviderSelect">
+                  <option value="gnews">GNews</option>
+                  <option value="newsapi">NewsAPI</option>
+                </select>
+                <input id="newsApiKeyInput" type="password" placeholder="Paste API key">
+                <p class="helper-text">Free provider keys: GNews / NewsAPI. Key is saved only in this browser.</p>
+              </article>
+              <article class="api-card">
+                <h3>Filters</h3>
+                <input id="newsQueryInput" type="text" placeholder="Topic or keyword (e.g. technology)" value="technology">
+                <div class="inline-actions">
+                  <select id="newsCountrySelect">
+                    <option value="us">United States</option>
+                    <option value="in">India</option>
+                    <option value="gb">United Kingdom</option>
+                    <option value="au">Australia</option>
+                  </select>
+                  <button id="loadNewsBtn">Load News</button>
+                </div>
+              </article>
+            </div>
+            <p class="result" id="newsStatus">News: Enter API key and load headlines.</p>
+            <div id="newsList" class="news-list"></div>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="crypto">
+            <div class="card-head"><span class="tag">CRYPTO</span><h2>Crypto Price Tracker</h2></div>
+            <div class="inline-actions">
+              <select id="cryptoCoinSelect">
+                <option value="bitcoin">Bitcoin (BTC)</option>
+                <option value="ethereum">Ethereum (ETH)</option>
+                <option value="solana">Solana (SOL)</option>
+                <option value="ripple">Ripple (XRP)</option>
+                <option value="cardano">Cardano (ADA)</option>
+                <option value="dogecoin">Dogecoin (DOGE)</option>
+              </select>
+              <select id="cryptoCurrencySelect">
+                <option value="usd">USD</option>
+                <option value="inr">INR</option>
+                <option value="eur">EUR</option>
+              </select>
+              <input id="cryptoAmountInput" type="number" min="0" step="0.0001" value="1" placeholder="Amount">
+              <button id="cryptoRefreshBtn">Refresh Price</button>
+            </div>
+            <p class="result" id="cryptoPrimaryResult">Crypto: Select coin and refresh.</p>
+            <p class="result" id="cryptoMetaResult">24h change and market cap details appear here.</p>
+            <div id="cryptoTopList" class="output-list"></div>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="devhub">
+            <div class="card-head"><span class="tag">DEV</span><h2>Developer Utility APIs</h2></div>
+            <div class="api-grid">
+              <article class="api-card">
+                <h3>IP Lookup</h3>
+                <div class="inline-actions">
+                  <input id="ipLookupInput" type="text" placeholder="IP address (leave empty for your IP)">
+                  <button id="runIpLookupBtn">Lookup IP</button>
+                </div>
+                <pre id="ipLookupOutput" class="output-box mono">IP lookup result will appear here.</pre>
+              </article>
+
+              <article class="api-card">
+                <h3>DNS Lookup</h3>
+                <div class="inline-actions">
+                  <input id="dnsLookupInput" type="text" placeholder="Domain (e.g. openai.com)">
+                  <select id="dnsTypeSelect">
+                    <option value="A">A</option>
+                    <option value="AAAA">AAAA</option>
+                    <option value="MX">MX</option>
+                    <option value="TXT">TXT</option>
+                    <option value="CNAME">CNAME</option>
+                  </select>
+                  <button id="runDnsLookupBtn">Resolve DNS</button>
+                </div>
+                <pre id="dnsLookupOutput" class="output-box mono">DNS records will appear here.</pre>
+              </article>
+
+              <article class="api-card">
+                <h3>URL Metadata</h3>
+                <div class="inline-actions">
+                  <input id="metaUrlInput" type="url" placeholder="https://example.com">
+                  <button id="runMetaLookupBtn">Get Metadata</button>
+                </div>
+                <pre id="metaLookupOutput" class="output-box mono">URL metadata will appear here.</pre>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel card" data-tool-panel="funapi">
+            <div class="card-head"><span class="tag">FUN</span><h2>Fun API Hub</h2></div>
+            <div class="inline-actions">
+              <button id="loadJokeBtn">Random Joke</button>
+              <button id="loadQuoteBtn">Random Quote</button>
+              <button id="loadFactBtn">Random Fact</button>
+            </div>
+            <p class="result" id="funApiStatus">Fun API: Pick a button to load content.</p>
+            <pre id="funApiOutput" class="output-box">Ready.</pre>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="fileshare">
+            <div class="card-head"><span class="tag">SHARE</span><h2>File Share</h2></div>
+            <p class="helper-text">Local-only mode: koi third-party upload nahi. QR scan se sirf code milega; file receive isi running browser/session se hoga (refresh ke baad auto clear).</p>
+            <div class="share-layout">
+              <article class="share-card">
+                <h3>Share Files</h3>
+                <input id="shareFileInput" type="file">
+                <textarea id="shareTextInput" placeholder="Optional: text share karna ho to yahan likho (local text QR banega)"></textarea>
+                <button id="createShareCodeBtn">Create Share Code</button>
+                <button id="createScanShareBtn">Generate Local QR</button>
+                <input id="shareCodeOutput" type="text" readonly placeholder="Share code appears here">
+                <input id="sharePublicLinkOutput" type="text" readonly placeholder="Local QR token appears here">
+                <div class="inline-actions">
+                  <button id="copyShareCodeBtn" class="ghost">Copy Code</button>
+                  <button id="copySharePublicLinkBtn" class="ghost">Copy Local Token</button>
+                  <button id="clearShareCodeBtn" class="ghost">Clear</button>
+                </div>
+                <div class="qr-preview qr-mini">
+                  <img id="shareQrImage" alt="Share QR" src="">
+                </div>
+                <p class="result" id="fileShareStatus">File Share: Ready</p>
+              </article>
+
+              <article class="share-card">
+                <h3>Receive Files</h3>
+                <input id="receiveShareCodeInput" type="text" placeholder="Enter share code">
+                <button id="receiveFileBtn">Receive File</button>
+                <a id="receivedFileDownloadLink" class="ghost hidden" download>Download Received File</a>
+                <p class="result" id="fileReceiveStatus">Receive: Waiting for code</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel card" data-tool-panel="love">
+            <div class="card-head"><span class="tag">LOVE</span><h2>Love Compatibility</h2></div>
+            <input id="loveNameA" type="text" placeholder="Your name">
+            <input id="loveNameB" type="text" placeholder="Partner name">
+            <button id="checkLoveBtn">Check Compatibility</button>
+            <p class="clock-secondary" id="loveScore">Compatibility: -</p>
+            <p class="result" id="loveMessage">Enter both names and check.</p>
+          </section>
+
+          <section class="panel card panel-wide" data-tool-panel="games">
+            <div class="card-head"><span class="tag">FUN</span><h2>Games Zone</h2></div>
+            <p class="helper-text">Open a full board, choose mode, and play. Tic Tac Toe supports Human vs Human and Computer vs Human. Ludo supports 2, 4, and 6 players.</p>
+            <div class="game-hub">
+              <div class="game-tabs" role="tablist" aria-label="Select game">
+                <button class="game-tab active" data-game-tab="tic" role="tab" aria-selected="true">Tic Tac Toe</button>
+                <button class="game-tab" data-game-tab="ludo" role="tab" aria-selected="false">Ludo</button>
+                <button class="game-tab" data-game-tab="snake" role="tab" aria-selected="false">Snake &amp; Ladder</button>
+              </div>
+
+              <section class="game-screen active" data-game-screen="tic">
+                <h3>Tic Tac Toe</h3>
+                <div class="mode-row">
+                  <span class="field-label">Mode</span>
+                  <div class="inline-actions game-mode-actions">
+                    <button id="tttModeHumanBtn" class="ghost game-choice active">Human vs Human</button>
+                    <button id="tttModeCpuBtn" class="ghost game-choice">Computer vs Human</button>
+                  </div>
+                </div>
+                <div class="ttt-board" id="tttBoard">
+                  <button class="ttt-cell" data-ttt-index="0"></button>
+                  <button class="ttt-cell" data-ttt-index="1"></button>
+                  <button class="ttt-cell" data-ttt-index="2"></button>
+                  <button class="ttt-cell" data-ttt-index="3"></button>
+                  <button class="ttt-cell" data-ttt-index="4"></button>
+                  <button class="ttt-cell" data-ttt-index="5"></button>
+                  <button class="ttt-cell" data-ttt-index="6"></button>
+                  <button class="ttt-cell" data-ttt-index="7"></button>
+                  <button class="ttt-cell" data-ttt-index="8"></button>
+                </div>
+                <div class="inline-actions">
+                  <button id="tttResetBtn" class="ghost">Reset Board</button>
+                </div>
+                <p class="result" id="tttStatus">Mode: Human vs Human | Turn: X</p>
+              </section>
+
+              <section class="game-screen game-screen-ludo" data-game-screen="ludo">
+                <h3>Ludo</h3>
+                <div class="mode-row">
+                  <span class="field-label">Mode</span>
+                  <div class="inline-actions game-mode-actions">
+                    <button id="ludoModeHumanBtn" class="ghost game-choice active">Human vs Human</button>
+                    <button id="ludoModeCpuBtn" class="ghost game-choice">Computer vs Human</button>
+                  </div>
+                </div>
+                <div class="mode-row">
+                  <span class="field-label">Players</span>
+                  <div class="inline-actions game-mode-actions">
+                    <button class="ghost game-choice active" data-ludo-players="2">2 Players</button>
+                    <button class="ghost game-choice" data-ludo-players="4">4 Players</button>
+                    <button class="ghost game-choice" data-ludo-players="6">6 Players</button>
+                  </div>
+                </div>
+                <div class="game-board-wrap ludo-board-wrap">
+                  <div class="ludo-track" id="ludoTrack"></div>
+                </div>
+                <div class="inline-actions game-controls">
+                  <button id="ludoRollBtn">Roll Dice</button>
+                  <button id="ludoResetBtn" class="ghost">New Match</button>
+                </div>
+                <p class="result game-meta" id="ludoTurn">Turn: Player 1</p>
+                <div class="dice-strip">
+                  <p class="result game-meta" id="ludoDice">Dice: -</p>
+                  <span class="dice-chip" id="ludoDiceChip" title="Click to roll / auto move">🎲 -</span>
+                </div>
+                <p class="result game-meta" id="ludoStatus">Roll dice to start Ludo.</p>
+                <div class="ludo-score" id="ludoScore"></div>
+              </section>
+
+              <section class="game-screen game-screen-snake" data-game-screen="snake">
+                <h3>Snake &amp; Ladder</h3>
+                <div class="mode-row">
+                  <span class="field-label">Mode</span>
+                  <div class="inline-actions game-mode-actions">
+                    <button id="snakeModeHumanBtn" class="ghost game-choice active">Human vs Human</button>
+                    <button id="snakeModeCpuBtn" class="ghost game-choice">Computer vs Human</button>
+                  </div>
+                </div>
+                <div class="game-board-wrap snake-board-wrap">
+                  <div class="snake-grid" id="snakeBoard"></div>
+                </div>
+                <div class="inline-actions game-controls">
+                  <button id="snakeRollBtn">Roll Dice</button>
+                  <button id="snakeResetBtn" class="ghost">New Match</button>
+                </div>
+                <p class="result game-meta" id="snakeTurn">Turn: Player 1</p>
+                <p class="result game-meta" id="snakeDice">Dice: -</p>
+                <p class="result game-meta" id="snakeStatus">Reach 100 to win.</p>
+                <p class="helper-text snake-map">Ladders: 3→16, 8→30, 28→84, 58→77, 75→86, 80→99 | Snakes: 17→7, 52→29, 57→40, 62→22, 88→48, 95→56, 97→78</p>
+              </section>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-grid">
+          <section class="footer-brand-block">
+            <div class="brand">
+              <span class="brand-mark"><img class="brand-logo-img" src="assets/logo.svg" alt="Utility Suite logo"></span>
+              <div>
+                <h2>Utility Suite</h2>
+                <p>Smart tools for daily tasks</p>
+              </div>
+            </div>
+            <p class="footer-note">Fast utility workspace for daily development and productivity tasks.</p>
+            <div class="social-links">
+              <a class="social-link" data-social-link="x" href="#" aria-label="X">
+                <span class="social-icon">𝕏</span>
+                <span>X</span>
+              </a>
+              <a class="social-link" data-social-link="facebook" href="#" aria-label="Facebook">
+                <span class="social-icon">f</span>
+                <span>Facebook</span>
+              </a>
+              <a class="social-link" data-social-link="instagram" href="#" aria-label="Instagram">
+                <span class="social-icon">◎</span>
+                <span>Instagram</span>
+              </a>
+              <a class="social-link" data-social-link="linkedin" href="#" aria-label="LinkedIn">
+                <span class="social-icon">in</span>
+                <span>LinkedIn</span>
+              </a>
+              <a class="social-link" data-social-link="youtube" href="#" aria-label="YouTube">
+                <span class="social-icon">▶</span>
+                <span>YouTube</span>
+              </a>
+              <a class="social-link" data-social-link="github" href="#" aria-label="GitHub">
+                <span class="social-icon">{ }</span>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </section>
+
+          <section>
+            <h3 class="footer-title">Quick Links</h3>
+            <div class="footer-links">
+              <a class="ghost footer-tool-link" data-footer-tool="contact" href="#" target="_blank" rel="noopener noreferrer">Contact Tool</a>
+              <a class="ghost footer-tool-link" data-footer-tool="notes" href="#" target="_blank" rel="noopener noreferrer">Quick Notes Tool</a>
+              <a class="ghost footer-tool-link" data-footer-tool="password" href="#" target="_blank" rel="noopener noreferrer">Password Generator Tool</a>
+              <a class="ghost footer-tool-link" data-footer-action="about" href="#" target="_blank" rel="noopener noreferrer">About Application</a>
+              <a class="ghost footer-tool-link" data-footer-action="updates" href="#" target="_blank" rel="noopener noreferrer">Feature Updates</a>
+              <a class="ghost footer-tool-link" data-footer-action="faq" href="#" target="_blank" rel="noopener noreferrer">Support &amp; FAQ</a>
+            </div>
+          </section>
+
+          <section>
+            <h3 class="footer-title">Contact Info</h3>
+            <div class="footer-contact">
+              <p><strong>Email:</strong> <a data-contact-href="email" data-contact-text="email" href="#">support@ssutilitysuite.com</a></p>
+              <p><strong>Phone:</strong> <a data-contact-href="phone_india" data-contact-text="phone_india" href="#">+91 78918 67859</a></p>
+              <p><strong>WhatsApp:</strong> <a data-contact-href="whatsapp" data-contact-text="whatsapp" href="#">+91 78918 67859</a></p>
+              <p><strong>Address:</strong> <span data-contact-text="address_india">Jaipur, Rajasthan, India</span></p>
+            </div>
+          </section>
+        </div>
+        <p class="footer-bottom">© <span id="footerYear">2026</span> Utility Suite. All rights reserved.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://unpkg.com/mammoth@1.8.0/mammoth.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="scripts/00-core-dom-and-links.js"></script>
+  <script src="scripts/00-core-footer-docs.js"></script>
+  <script src="scripts/00-core-app-shell.js"></script>
+  <script src="scripts/01-calculator.js"></script>
+  <script src="scripts/02-unit-converter.js"></script>
+  <script src="scripts/03-age-calculator.js"></script>
+  <script src="scripts/04-password-generator.js"></script>
+  <script src="scripts/05-quick-notes.js"></script>
+  <script src="scripts/06-global-clock-basic.js"></script>
+  <script src="scripts/07-qr-generator.js"></script>
+  <script src="scripts/08-file-share.js"></script>
+  <script src="scripts/09-wallpaper-gallery.js"></script>
+  <script src="scripts/10-pdf-utility-hub.js"></script>
+  <script src="scripts/11-pass-pin-generator.js"></script>
+  <script src="scripts/12-case-converter.js"></script>
+  <script src="scripts/13-encoder-decoder.js"></script>
+  <script src="scripts/14-diff-checker.js"></script>
+  <script src="scripts/15-regex-tester.js"></script>
+  <script src="scripts/16-cron-generator.module.js"></script>
+  <script src="scripts/16-cron-generator.js"></script>
+  <script src="scripts/17-world-clock.js"></script>
+  <script src="scripts/18-currency-converter.module.js"></script>
+  <script src="scripts/18-currency-converter.js"></script>
+  <script src="scripts/19-budget-box.js"></script>
+  <script src="scripts/20-split-expense.js"></script>
+  <script src="scripts/21-emi-calculator.js"></script>
+  <script src="scripts/22-json-formatter.js"></script>
+  <script src="scripts/23-sql-formatter.js"></script>
+  <script src="scripts/24-speed-test.module.js"></script>
+  <script src="scripts/24-speed-test.js"></script>
+  <script src="scripts/25-weather-anywhere.js"></script>
+  <script src="scripts/26-news-feed.js"></script>
+  <script src="scripts/27-crypto-tracker.js"></script>
+  <script src="scripts/28-developer-apis.js"></script>
+  <script src="scripts/29-fun-api-hub.js"></script>
+  <script src="scripts/30-tic-tac-toe.js"></script>
+  <script src="scripts/31-ludo.js"></script>
+  <script src="scripts/32-snake-ladder.js"></script>
+</body>
+</html>

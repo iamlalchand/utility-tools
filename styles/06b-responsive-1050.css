@@ -1,0 +1,30 @@
+
+@media (max-width: 1050px) {
+  .tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .json-workbench {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .json-editor {
+    min-height: 280px;
+    height: auto;
+    resize: vertical;
+  }
+
+  .json-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .json-actions select {
+    grid-column: 1 / -1;
+  }
+}
+

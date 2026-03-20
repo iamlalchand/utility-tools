@@ -1,0 +1,427 @@
+.password-generator .helper-text,
+.password-generator .field-label,
+.password-strength-label,
+.password-check,
+.password-actions .result,
+.password-generator button {
+  font-size: 0.92rem;
+}
+
+.password-output-wrap {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+  background: color-mix(in srgb, var(--input-bg) 74%, #ffffff);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+#passOutput {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+}
+
+#passOutput:focus {
+  box-shadow: none;
+}
+
+.password-output-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.password-icon-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 11px;
+  font-size: 1.3rem;
+  display: grid;
+  place-items: center;
+}
+
+.password-strength-row {
+  display: grid;
+  gap: 8px;
+}
+
+.password-strength-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--chip) 74%, #ffffff);
+  overflow: hidden;
+}
+
+#passStrengthFill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.25s ease, background 0.25s ease;
+  background: #cf4949;
+}
+
+#passStrengthFill[data-strength="fair"] {
+  background: #d89d31;
+}
+
+#passStrengthFill[data-strength="good"] {
+  background: #2f8dcb;
+}
+
+#passStrengthFill[data-strength="strong"] {
+  background: #13814f;
+}
+
+.password-strength-label {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.password-settings {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--input-bg) 68%, #ffffff);
+  padding: 12px;
+  display: grid;
+  gap: 12px;
+}
+
+.password-length-row {
+  display: grid;
+  gap: 8px;
+}
+
+#passLen {
+  width: 100%;
+  margin: 0;
+  cursor: pointer;
+  height: 6px;
+  border: none;
+  background: color-mix(in srgb, var(--border) 90%, #ffffff);
+  border-radius: 999px;
+  accent-color: var(--primary);
+}
+
+#passLen::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--card);
+  background: linear-gradient(135deg, var(--primary), var(--primary-gradient-end));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+#passLen::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--card);
+  background: linear-gradient(135deg, var(--primary), var(--primary-gradient-end));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.password-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.password-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.password-check input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--primary);
+}
+
+.password-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.case-panel {
+  --case-surface-start: color-mix(in srgb, var(--card) 96%, #ffffff);
+  --case-surface-end: color-mix(in srgb, var(--card) 90%, var(--chip));
+  --case-editor-bg: #fff8fb;
+  --case-editor-text: #3f3238;
+  --case-editor-border: color-mix(in srgb, var(--border) 82%, #efc8d8);
+  --case-util-bg: color-mix(in srgb, var(--input-bg) 75%, #ffffff);
+  --case-util-border: color-mix(in srgb, var(--border) 84%, #d7bac5);
+  --case-util-text: color-mix(in srgb, var(--text) 90%, #5d4550);
+  --case-action-bg: color-mix(in srgb, var(--input-bg) 70%, #ffffff);
+  --case-action-border: color-mix(in srgb, var(--border) 80%, #d8bcc8);
+  --case-action-text: color-mix(in srgb, var(--text) 95%, #4a3840);
+  --case-action-hover-bg: color-mix(in srgb, var(--primary) 14%, #ffffff);
+  border-color: color-mix(in srgb, var(--border) 84%, #e3c4d1);
+  background: linear-gradient(180deg, var(--case-surface-start), var(--case-surface-end));
+}
+
+.case-panel[data-case-theme="slate"] {
+  --case-surface-start: #f4f7fb;
+  --case-surface-end: #e7edf5;
+  --case-editor-bg: #eef3fa;
+  --case-editor-text: #223142;
+  --case-editor-border: #c2d0df;
+  --case-util-bg: #dde7f2;
+  --case-util-border: #b9cadb;
+  --case-util-text: #2c4052;
+  --case-action-bg: #d9e5f2;
+  --case-action-border: #b4c7da;
+  --case-action-text: #213444;
+  --case-action-hover-bg: #c7dbf1;
+}
+
+.case-panel[data-case-theme="coffee"] {
+  --case-surface-start: #f8f2ed;
+  --case-surface-end: #efe2d7;
+  --case-editor-bg: #fffaf5;
+  --case-editor-text: #3d2d23;
+  --case-editor-border: #d8b8a0;
+  --case-util-bg: #edd8c8;
+  --case-util-border: #cfaf95;
+  --case-util-text: #4a3326;
+  --case-action-bg: #e8d2c1;
+  --case-action-border: #c7a88f;
+  --case-action-text: #432f23;
+  --case-action-hover-bg: #dfc1a9;
+}
+
+#caseEditor {
+  width: 100%;
+  min-height: 210px;
+  border: 1px solid var(--case-editor-border);
+  border-radius: 10px;
+  background: var(--case-editor-bg);
+  color: var(--case-editor-text);
+  font-family: "Consolas", "Menlo", "Monaco", monospace;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.case-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.case-utils {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.case-util-btn {
+  width: 40px;
+  height: 36px;
+  padding: 0;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  background: var(--case-util-bg) !important;
+  border: 1px solid var(--case-util-border) !important;
+  color: var(--case-util-text) !important;
+}
+
+.case-util-btn:hover {
+  background: color-mix(in srgb, var(--case-util-bg) 78%, var(--primary)) !important;
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.case-theme-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.case-theme-wrap .field-label {
+  margin: 0;
+}
+
+.case-theme-select {
+  width: auto;
+  min-width: 128px;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+
+.case-counts {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--text) 88%, #4f4047);
+  margin-left: auto;
+}
+
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.case-action-btn {
+  border: 1px solid var(--case-action-border) !important;
+  border-radius: 6px;
+  background: var(--case-action-bg) !important;
+  color: var(--case-action-text) !important;
+  padding: 8px 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  box-shadow: none !important;
+}
+
+.case-action-btn:hover {
+  background: var(--case-action-hover-bg) !important;
+  border-color: color-mix(in srgb, var(--primary) 50%, var(--case-action-border)) !important;
+  transform: translateY(-1px);
+}
+
+.split-layout {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.split-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--input-bg) 75%, #ffffff);
+  padding: 10px;
+  display: grid;
+  gap: 9px;
+}
+
+.split-card h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.kpi-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.kpi-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px;
+  background: color-mix(in srgb, var(--input-bg) 74%, #ffffff);
+}
+
+.kpi-card p,
+.kpi-card strong {
+  margin: 0;
+}
+
+.kpi-card p {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.kpi-card strong {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 1.06rem;
+}
+
+.panel-wide {
+  max-width: 980px;
+}
+
+.panel-full {
+  max-width: none;
+  width: 100%;
+}
+
+#sqlInput,
+#sqlOutput {
+  min-height: 220px;
+  font-family: "Consolas", "Menlo", "Monaco", monospace;
+}
+
+.json-panel {
+  gap: 12px;
+}
+
+.json-workbench {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px minmax(0, 1fr);
+  gap: 12px;
+  min-height: clamp(420px, 68vh, 760px);
+}
+
+.json-editor-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--input-bg) 76%, #ffffff);
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+  min-height: 0;
+}
+
+.json-editor-card .field-label {
+  margin: 0;
+}
+
+.json-editor {
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+  border-radius: 10px;
+  background: var(--input-bg);
+  color: var(--text);
+  font-family: "Consolas", "Menlo", "Monaco", monospace;
+  font-size: 13px;
+  line-height: 1.52;
+  resize: none;
+}
+
+.json-actions {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--input-bg) 72%, #ffffff);
+  padding: 10px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.json-actions button,
+.json-actions select {
+  width: 100%;
+}
+
+.sub-head {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
