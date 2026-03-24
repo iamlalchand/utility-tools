@@ -110,6 +110,6 @@
   }
 
   loadAllInOrder().catch((error) => {
-    console.error("Utility Suite bootstrap failed", error);
+    console.error("Utility Tools bootstrap failed", error);
   });
 })();

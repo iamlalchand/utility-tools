@@ -1,4 +1,4 @@
-# Utility Suite
+# Utility Tools
 
 A lightweight day-to-day utility web app with common tools for all users.
 

@@ -48,7 +48,7 @@ const toolMeta = {
   },
   contact: {
     title: "Contact Us",
-    description: "Reach Utility Suite support via phone, email and social links.",
+    description: "Reach Utility Tools support via phone, email and social links.",
   },
   time: {
     title: "Global Clock",

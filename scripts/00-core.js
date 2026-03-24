@@ -283,7 +283,7 @@ function renderFooterDocShell({ title, subtitle, body }) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(title)} | Utility Suite</title>
+  <title>${escapeHtml(title)} | Utility Tools</title>
   <style>
     :root {
       --bg: #f8f5f2;
@@ -441,7 +441,7 @@ function renderFooterDocShell({ title, subtitle, body }) {
 <body>
   <main class="wrap">
     <section class="hero">
-      <span class="kicker">Utility Suite</span>
+      <span class="kicker">Utility Tools</span>
       <h1>${escapeHtml(title)}</h1>
       <p class="subtitle">${escapeHtml(subtitle)}</p>
       <p class="meta">Auto-generated from current app data. Opened: ${escapeHtml(new Date().toLocaleString())}</p>
@@ -471,7 +471,7 @@ function openFooterActionPage(action) {
     const body = `
       <section class="section">
         <h2>Application Overview</h2>
-        <p class="subtitle">Utility Suite is a multi-tool web workspace for daily tasks. Each tool opens in a dedicated panel, with search, themes, and a single dashboard to keep workflows fast and simple.</p>
+        <p class="subtitle">Utility Tools is a multi-tool web workspace for daily tasks. Each tool opens in a dedicated panel, with search, themes, and a single dashboard to keep workflows fast and simple.</p>
       </section>
       <section class="section">
         <h2>Current Snapshot</h2>
@@ -614,7 +614,7 @@ const toolMeta = {
   },
   contact: {
     title: "Contact Us",
-    description: "Reach Utility Suite support via phone, email and social links.",
+    description: "Reach Utility Tools support via phone, email and social links.",
   },
   time: {
     title: "Global Clock",
